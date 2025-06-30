@@ -14,16 +14,16 @@ function CategoryPage({ title }) {
   const filteredImages = images.filter((src) => src.toLowerCase().includes(filter.toLowerCase()));
 
   return (
-    <div className="min-h-screen bg-white bg-opacity-90 p-6 md:p-10">
-      <h2 className="text-3xl font-bold text-green-800 mb-4 animate-fade-in">{title}</h2>
-      <p className="text-gray-700 mb-6 animate-fade-in">Ta kontakt for spesialbestillinger eller spørsmål.</p>
+    <div className="min-h-screen bg-floral bg-opacity-90 p-6 md:p-10 font-sans text-muted text-base">
+      <h2 className="text-3xl font-bold text-leaf mb-4 animate-fade-in">{title}</h2>
+      <p className="text-muted mb-6 animate-fade-in">Ta kontakt for spesialbestillinger eller spørsmål.</p>
 
       <input
         type="text"
         placeholder="Søk etter bilde..."
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
-        className="mb-6 p-2 border rounded w-full max-w-sm animate-fade-in"
+        className="mb-6 p-2 border border-gray-300 rounded w-full max-w-sm animate-fade-in"
       />
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -39,7 +39,7 @@ function CategoryPage({ title }) {
               />
             </div>
             <div className="text-center w-full mt-2">
-              <span className="text-xs text-gray-700 font-medium">{`${title} ${images.indexOf(src) + 1}`}</span>
+              <span className="text-xs text-muted font-medium">{`${title} ${images.indexOf(src) + 1}`}</span>
             </div>
           </div>
         ))}
@@ -47,7 +47,7 @@ function CategoryPage({ title }) {
 
       {fullscreenIndex !== null && (
         <div className="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center z-50 animate-zoom-in px-4">
-          <button className="absolute top-5 right-5 text-white text-3xl hover:text-red-400 transition" onClick={() => setFullscreenIndex(null)}>
+          <button className="absolute top-5 right-5 text-white text-3xl hover:text-rose transition" onClick={() => setFullscreenIndex(null)}>
             ✕
           </button>
           <img
@@ -64,7 +64,7 @@ function CategoryPage({ title }) {
       )}
 
       <div className="mt-8 text-center animate-fade-in">
-        <p className="text-lg text-gray-800">📞 Kontakt: 123 45 678 | ✉️ E-post: aranka@example.com</p>
+        <p className="text-lg text-muted">📞 Kontakt: 123 45 678 | ✉️ E-post: aranka@example.com</p>
       </div>
     </div>
   );
@@ -91,7 +91,7 @@ export default function HomePage() {
   return (
     <>
       <main
-        className="min-h-screen font-sans text-gray-900 relative"
+        className="min-h-screen font-sans text-muted text-base relative"
         style={{
           backgroundImage: "url('/leaf-bg.png.png')",
           backgroundSize: "cover",
@@ -104,11 +104,11 @@ export default function HomePage() {
         <nav className="flex flex-wrap justify-between items-center p-4 bg-white bg-opacity-95 shadow-md sticky top-0 z-10">
           <div className="flex items-center space-x-4">
             <img src="/26.jpg" alt="Logo" className="w-[250px] max-w-[400px] h-auto rounded shadow animate-fade-in" />
-            <span className="text-2xl font-bold text-green-900">Aranka Orsos</span>
+            <span className="text-2xl font-bold text-leaf">Aranka Orsos</span>
           </div>
-          <ul className="flex flex-wrap space-x-4 text-base text-green-800">
+          <ul className="flex flex-wrap space-x-4 text-base text-leaf">
             {categories.map((cat) => (
-              <li key={cat} className="hover:text-pink-600 transition cursor-pointer">
+              <li key={cat} className="hover:text-rose transition cursor-pointer">
                 <Link to={`/${cat.toLowerCase().replace(/ /g, "-")}`}>{t(cat)}</Link>
               </li>
             ))}
@@ -127,23 +127,23 @@ export default function HomePage() {
         </nav>
 
         <section className="py-12 px-6 md:px-20 text-center bg-white bg-opacity-90 rounded-xl mx-4 mt-6 shadow-lg z-10 relative animate-fade-in">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-green-900">🇳🇴 NORSK</h1>
-          <p className="text-lg md:text-xl text-gray-800 mb-4">
+          <h1 className="text-[36px] font-extrabold mb-6 text-leaf">🇳🇴 NORSK</h1>
+          <p className="text-lg text-muted mb-4">
             Skreddersydde blomsterarrangementer for alle anledninger – silke, kunstige og friske blomster
           </p>
-          <p className="text-base md:text-lg text-gray-800 mb-2">
+          <p className="text-base text-muted mb-2">
             For begravelse, dåp, bursdag eller andre spesielle øyeblikk – jeg lager vakre og personlige dekorasjoner med varme og omtanke.
           </p>
-          <ul className="text-left text-gray-800 mx-auto max-w-2xl list-disc list-inside my-4">
+          <ul className="text-left text-muted mx-auto max-w-2xl list-disc list-inside my-4">
             <li>🌸 Dekorasjoner med silke- og kunstblomster av høy kvalitet</li>
             <li>🌼 Friske blomsterbuketter på forespørsel</li>
             <li>🌹 Unike design i alle stiler og størrelser</li>
             <li>🌿 Håndlaget blomsterkunst som varer</li>
           </ul>
-          <p className="text-base md:text-lg text-gray-800 mt-6">
+          <p className="text-base text-muted mt-6">
             🛍️ Alle blomster og materialer bestilles fra pålitelige norske leverandører: <strong>Interflora</strong> og <strong>Rusta</strong>.
           </p>
-          <p className="text-xl font-semibold text-green-800 mt-4">
+          <p className="text-xl font-semibold text-leaf mt-4">
             🎨 Slik du ser det for deg – slik lager jeg det.
           </p>
         </section>
