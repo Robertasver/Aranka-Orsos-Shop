@@ -4,67 +4,147 @@ import i18n from "./i18n";
 import { Link, Route, Routes } from "react-router-dom";
 
 function CategoryPage({ title }) {
-  const images = Array.from({ length: 70 }, (_, i) => `/${title.toLowerCase().replace(/ /g, "")}/${i + 1}.jpg`);
+  const folder = title.toLowerCase().replace(/ /g, "-");
+
+  const [loadedMedia, setLoadedMedia] = useState([]);
   const [fullscreenIndex, setFullscreenIndex] = useState(null);
   const [filter, setFilter] = useState("");
 
-  const handleNext = () => setFullscreenIndex((prev) => (prev + 1) % images.length);
-  const handlePrev = () => setFullscreenIndex((prev) => (prev - 1 + images.length) % images.length);
+  useEffect(() => {
+    const loadMedia = async () => {
+      const maxImages = 70;
+      const maxVideos = 5;
+      const media = [];
 
-  const filteredImages = images.filter((src) => src.toLowerCase().includes(filter.toLowerCase()));
+      // Try images
+      for (let i = 1; i <= maxImages; i++) {
+        const src = `/${folder}/${i}.jpg`;
+        try {
+          const res = await fetch(src);
+          if (res.ok) media.push(src);
+        } catch (e) {}
+      }
+
+      // Try videos
+      for (let i = 1; i <= maxVideos; i++) {
+        const src = `/${folder}/${i}.mp4`;
+        try {
+          const res = await fetch(src);
+          if (res.ok) media.push(src);
+        } catch (e) {}
+      }
+
+      setLoadedMedia(media);
+    };
+
+    loadMedia();
+  }, [title]);
+
+  const next = () =>
+    setFullscreenIndex((prev) => (prev + 1) % loadedMedia.length);
+  const prev = () =>
+    setFullscreenIndex((prev) => (prev - 1 + loadedMedia.length) % loadedMedia.length);
+
+  const filteredImages = loadedMedia.filter((src) =>
+    src.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
-    <div className="min-h-screen bg-floral bg-opacity-90 p-6 md:p-10 font-sans text-muted text-base">
-      <h2 className="text-3xl font-bold text-leaf mb-4 animate-fade-in">{title}</h2>
-      <p className="text-muted mb-6 animate-fade-in">Ta kontakt for spesialbestillinger eller spørsmål.</p>
+    <div>
+      <div className="min-h-screen bg-floral bg-opacity-90 p-6 md:p-10 font-sans text-muted text-base">
+        <h1 className="text-xl font-bold text-left mb-4 animate-fade-in">{title}</h1>
+        <p className="text-muted mb-6 animate-fade-in">
+          Ta kontakt for spesialbestillinger eller spørsmål.
+        </p>
 
-      <input
-        type="text"
-        placeholder="Søk etter bilde..."
-        value={filter}
-        onChange={(e) => setFilter(e.target.value)}
-        className="mb-6 p-2 border border-gray-300 rounded w-full max-w-sm animate-fade-in"
-      />
+        <input
+          type="text"
+          placeholder="Søk etter bilde..."
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          className="mb-6 p-2 border border-gray-300 rounded w-full max-w-sm animate-fade-in"
+        />
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-        {filteredImages.map((src, idx) => (
-          <div key={idx} className="flex flex-col items-center bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition duration-300 animate-fade-in">
-            <div className="w-[48px] h-[48px] sm:w-[64px] sm:h-[64px] md:w-[96px] md:h-[96px] overflow-hidden rounded shadow">
-              <img
-                src={src}
-                alt={`${title} ${idx + 1}`}
-                className="w-full h-full object-cover cursor-pointer transition-transform duration-300 hover:scale-105"
-                onClick={() => setFullscreenIndex(images.indexOf(src))}
-                onError={(e) => (e.target.style.display = "none")}
-              />
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          {filteredImages.map((src, i) => (
+            <div
+              key={i}
+              className="flex flex-col items-center bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 animate-fade-in"
+              style={{ width: "100%" }}
+            >
+              {src.endsWith(".mp4") ? (
+                <video
+                  controls
+                  className="w-full h-[296px] object-cover rounded shadow"
+                  onClick={() => setFullscreenIndex(loadedMedia.indexOf(src))}
+                >
+                  <source src={src} type="video/mp4" />
+                </video>
+              ) : (
+                <img
+                  src={src}
+                  alt={`Bilde ${i + 1}`}
+                  className="w-full h-[296px] object-cover rounded shadow"
+                  onClick={() => setFullscreenIndex(loadedMedia.indexOf(src))}
+                />
+              )}
+              <div className="text-center w-full mt-2">
+                <span className="text-xs text-muted font-medium">
+                  #{loadedMedia.indexOf(src) + 1}
+                </span>
+              </div>
             </div>
-            <div className="text-center w-full mt-2">
-              <span className="text-xs text-muted font-medium">{`${title} ${images.indexOf(src) + 1}`}</span>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {fullscreenIndex !== null && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center z-50 animate-zoom-in px-4">
-          <button className="absolute top-5 right-5 text-white text-3xl hover:text-rose transition" onClick={() => setFullscreenIndex(null)}>
+        <div className="fixed inset-0 bg-black bg-opacity-95 flex flex-col items-center justify-center z-50 animate-zoom-in px-4">
+          <button
+            className="absolute top-5 right-5 text-white text-3xl hover:text-rose transition"
+            onClick={() => setFullscreenIndex(null)}
+          >
             ✕
           </button>
-          <img
-            src={images[fullscreenIndex]}
-            alt="Fullscreen"
-            className="max-w-full max-h-[85vh] rounded shadow-lg mb-4"
-          />
-          <div className="text-white text-lg italic font-light mb-4">{`${title} ${fullscreenIndex + 1}`}</div>
-          <div className="flex gap-6">
-            <button onClick={handlePrev} className="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200">← Forrige</button>
-            <button onClick={handleNext} className="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200">Neste →</button>
+
+          {loadedMedia[fullscreenIndex].endsWith(".mp4") ? (
+            <video controls className="max-w-full max-h-[85vh] rounded shadow-lg">
+              <source src={loadedMedia[fullscreenIndex]} type="video/mp4" />
+            </video>
+          ) : (
+            <img
+              src={loadedMedia[fullscreenIndex]}
+              alt={`Fullscreen ${fullscreenIndex + 1}`}
+              className="max-w-full max-h-[85vh] rounded shadow-lg"
+            />
+          )}
+
+          <div className="mt-6 text-white text-lg italic font-light">
+            #{fullscreenIndex + 1}{" "}
+            {loadedMedia[fullscreenIndex].endsWith(".mp4") ? "(video)" : ""}
+          </div>
+
+          <div className="mt-6 flex gap-6">
+            <button
+              className="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200"
+              onClick={prev}
+            >
+              Forrige
+            </button>
+            <button
+              className="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200"
+              onClick={next}
+            >
+              Neste
+            </button>
           </div>
         </div>
       )}
 
       <div className="mt-8 text-center animate-fade-in">
-        <p className="text-lg text-muted">📞 Kontakt: 123 45 678 | ✉️ E-post: aranka@example.com</p>
+        <p className="text-sm text-muted">
+          Kontakt: 123 45 678 | E-post: aranka@example.com
+        </p>
       </div>
     </div>
   );
@@ -89,7 +169,7 @@ export default function HomePage() {
   ];
 
   return (
-    <>
+<>
       <main
         className="min-h-screen font-sans text-muted text-base relative"
         style={{
