@@ -25,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build:manifests": "node scripts/build-manifests.mjs",
-    "prestart": "npm run build:manifests"
+    "prestart": "npm run build:manifests",
+    "prebuild": "npm run build:manifests"
   },
   "browserslist": {
     "production": [
