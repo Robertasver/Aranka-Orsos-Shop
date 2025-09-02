@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://example.com/</loc><lastmod>2025-08-31</lastmod></url>
-<url><loc>https://example.com/begravelse</loc><lastmod>2025-08-31</lastmod></url>
-<url><loc>https://example.com/bestselger</loc><lastmod>2025-08-31</lastmod></url>
-<url><loc>https://example.com/bryllupsbuketter</loc><lastmod>2025-08-31</lastmod></url>
-<url><loc>https://example.com/bursdagsbuketter</loc><lastmod>2025-08-31</lastmod></url>
-<url><loc>https://example.com/dekorasjoner</loc><lastmod>2025-08-31</lastmod></url>
-<url><loc>https://example.com/rosebuketter</loc><lastmod>2025-08-31</lastmod></url>
-<url><loc>https://example.com/kontakt</loc><lastmod>2025-08-31</lastmod></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/</loc><priority>1.0</priority></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/bestselger</loc></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/bryllupsbuketter</loc></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/bursdagsbuketter</loc></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/dekorasjoner</loc></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/rosebuketter</loc></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/begravelse</loc></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/kontakt</loc></url>
 </urlset>
