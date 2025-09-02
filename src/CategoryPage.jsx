@@ -4,10 +4,10 @@ import { useTranslation } from "react-i18next";
 import { CATEGORIES, MEDIA_EXTENSIONS } from "./categories";
 import UniformGrid from "./components/UniformGrid";
 import LightboxFS from "./components/LightboxFS";
-import SEO from "./SEO";
 import CategoryHero from "./components/CategoryHero";
 import "./styles/uniform.css";
 import "./styles/category-fixes.css";
+import { Helmet } from "react-helmet-async";
 
 function extType(path){
   const e = (path.split(".").pop() || "").toLowerCase();
@@ -133,9 +133,24 @@ export default function CategoryPage() {
   const onPrev = () => setOpenIndex((i) => (i <= 0 ? filtered.length - 1 : i - 1));
   const onNext = () => setOpenIndex((i) => (i >= filtered.length - 1 ? 0 : i + 1));
 
+  const slug = (meta?.slug || "").toLowerCase();
+  const descriptionMap = {
+    bestselger: "Se våre mest populære evighetsblomster og dekor.",
+    bryllupsbuketter: "Håndlagde bryllupsbuketter i evighetsblomster.",
+    bursdagsbuketter: "Gled noen med varige bursdagsbuketter.",
+    dekorasjoner: "Varige dekorasjoner for hjem og arrangement.",
+    rosebuketter: "Klassiske rosebuketter i evighetsblomster.",
+    begravelse: "Verdige og varige blomster til begravelser."
+  };
+  const description = descriptionMap[slug] || `Galleri: ${slug}`;
+
   return (
     <main className="page">
-      <SEO title={`${t(meta?.label || "")} • Aranka Orsos`} description={`Galleri: ${t(meta?.label || "")}`} />
+      <Helmet>
+        <title>{`${t(meta?.label || "")} • Aranka Orsos`}</title>
+        <meta name="description" content={description} />
+        {slug && <link rel="canonical" href={`https://www.aranka-orsos-butikk.com/${slug}`} />}
+      </Helmet>
 
       <CategoryHero title={t(meta?.label || "")} items={items} />
 
