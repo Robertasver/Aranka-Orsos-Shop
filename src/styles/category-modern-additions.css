@@ -1,0 +1,24 @@
+
+/* ===== Simple hero (no mosaic) ===== */
+.cat-hero.no-mosaic{
+  position: relative;
+  display:block;
+  margin: 20px 16px;
+  padding: clamp(36px, 5vw, 64px) clamp(16px, 3vw, 28px);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(120% 120% at 20% 0%, rgba(154,223,104,.12), rgba(71,207,133,.05) 40%, rgba(0,0,0,0) 70%),
+    linear-gradient(180deg, rgba(10,16,13,.86), rgba(10,16,13,.74)),
+    var(--hero-bg, none) center/cover no-repeat;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+@media (min-width:900px){ .cat-hero.no-mosaic{ margin: 24px; } }
+.cat-hero.no-mosaic .hero-card{
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}

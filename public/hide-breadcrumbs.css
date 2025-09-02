@@ -1,0 +1,45 @@
+
+/* --- Hide tiny breadcrumb line (e.g. “Aranka Orsos • Gallery”) on gallery/category pages --- */
+
+/* Most common breadcrumb containers */
+nav[aria-label*="breadcrumb"],
+nav[aria-label="breadcrumbs"],
+.breadcrumbs,
+.breadcrumb,
+.breadcrumbs-wrapper,
+.breadcrumb__wrapper,
+.breadcrumb-wrapper,
+.gallery-breadcrumbs,
+.gallery-crumbs,
+.crumbs,
+#breadcrumbs,
+[data-breadcrumb],
+[data-testid="breadcrumbs"],
+[class*="breadcrumb"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+}
+
+/* If the breadcrumb text was placed in a plain <p>/<small> within a header bar,
+   this rule removes any single-line “• Gallery” style crumbs safely */
+header :is(p, small, span) {
+  /* only hide extremely small, breadcrumb‑like runs of text */
+  font-size: clamp(8px, 0.8rem, 13px);
+}
+header :is(p, small, span):has(> a),
+header :is(p, small, span):has(> span) {
+  display: none !important;
+}
+
+/* Remove ghost spacing rows that some CSS frameworks leave behind */
+:where(.breadcrumb-row, .breadcrumbs-row, .gallery-crumbs-row) {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}

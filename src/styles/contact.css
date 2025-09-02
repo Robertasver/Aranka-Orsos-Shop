@@ -1,0 +1,39 @@
+
+/* Ensure everything in the card sizes correctly */
+.contact-card, .contact-card *, .contact-card *::before, .contact-card *::after { box-sizing: border-box; }
+
+.contact-wrap{display:flex;justify-content:center;padding:32px 16px}
+.contact-card{width:100%;max-width:900px;border-radius:16px;padding:24px;background:rgba(18,30,22,.42);border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(6px);color:#fff;overflow:hidden}
+
+.contact-head{margin-bottom:14px}
+.contact-head h1{margin:0 0 6px 0;font-size:1.5rem;letter-spacing:.2px}
+.contact-head p{margin:0;color:rgba(255,255,255,.82);font-size:.98rem}
+
+/* Use minmax(0,1fr) to prevent overflow from intrinsic min-size, and allow children to shrink */
+.contact-form{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin-top:12px}
+@media (min-width:760px){.contact-form{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.col-span-2{grid-column:1/-1}}
+
+/* Allow grid items to shrink inside tracks */
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.label{font-size:.85rem;opacity:.9}
+
+/* Inputs always fit inside their cell */
+.input{width:100%;max-width:100%;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;outline:none;transition:border-color .15s ease, background .15s ease, box-shadow .15s ease;min-height:42px}
+.input:focus{border-color:rgba(120,255,200,.6);box-shadow:0 0 0 3px rgba(120,255,200,.12);background:rgba(255,255,255,.08)}
+.input::placeholder{color:rgba(255,255,255,.6)}
+textarea.input{min-height:140px;resize:vertical}
+
+.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:4px}
+.btn{padding:10px 16px;border-radius:12px;border:1px solid transparent;cursor:pointer;text-decoration:none;font-weight:600}
+.btn-primary{background:rgba(28,145,102,.96);border-color:rgba(28,145,102,1);color:#fff}
+.btn-primary:hover{background:rgba(33,165,116,1)}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,.22);color:#fff}
+.btn-ghost:hover{border-color:rgba(255,255,255,.38);background:rgba(255,255,255,.06)}
+
+.contact-info{margin-top:18px;display:grid;gap:6px}
+@media (min-width:760px){.contact-info{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.info-item{display:flex;align-items:center;gap:8px;opacity:.95}
+.info-item a{color:#baf1d4;text-decoration:none}
+.info-item a:hover{text-decoration:underline}
+
+.contact-footer-spacer{height:6px}

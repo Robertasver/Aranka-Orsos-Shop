@@ -1,12 +1,51 @@
 <!DOCTYPE html>
 <html lang="no">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/logo.jpg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="%PUBLIC_URL%/hide-breadcrumbs.css" />
+      <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#4caf50" />
     <meta name="description" content="Evighetsblomster fra Aranka Orsos" />
     <title>Aranka Evighetsblomster</title>
+      <!-- Favicon and app icons -->
+      <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+      <link rel="apple-touch-icon" sizes="192x192" href="%PUBLIC_URL%/logo192.png" />
+      <link rel="apple-touch-icon" sizes="512x512" href="%PUBLIC_URL%/logo512.png" />
+
+      <!-- Manifest -->
+      <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+      <meta name="theme-color" content="#0d3b2e" />
+      <!-- Favicon + app icons -->
+
+      <!-- PWA Manifest -->
+
+      <!-- Windows tiles -->
+      <meta name="msapplication-config" content="%PUBLIC_URL%/browserconfig.xml" />
+      <meta name="msapplication-TileColor" content="#0d3b2e" />
+
+      <!-- Safari pinned tab (uses the current tab color) -->
+      <link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#d4b46a" />
+
+      <!-- Theme color for address bar / status bar -->
+      <meta name="theme-color" content="#0d3b2e" />
+      <!-- Apple splash screens -->
+      <link rel="apple-touch-startup-image" href="/apple-splash-640-1136.png"
+            media="(device-width: 320px) and (device-height: 568px)
+             and (-webkit-device-pixel-ratio: 2)" />
+      <link rel="apple-touch-startup-image" href="/apple-splash-750-1334.png"
+            media="(device-width: 375px) and (device-height: 667px)
+             and (-webkit-device-pixel-ratio: 2)" />
+      <!-- Favicon and app icons -->
+
+      <!-- Manifest -->
+      <meta name="theme-color" content="#0d3b2e" />
+      <script src="%PUBLIC_URL%/remove-gallery-crumbs.js" defer></script>
+  
+<style>
+  html, body, #root { margin: 0; padding: 0; }
+  .navbar { margin-top: 0; }
+</style>
+
   </head>
   <body class="bg-green-50">
     <noscript>You need to enable JavaScript to run this app.</noscript>

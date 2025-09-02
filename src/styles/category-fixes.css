@@ -1,0 +1,25 @@
+
+/* ===== Category UI fixes ===== */
+
+/* Hide duplicate title in sticky bar (we already show hero title) */
+.page-header .page-title{ display: none !important; }
+
+/* CTA overlay is hidden by default, shows on hover */
+.tile .overlay-content{ opacity: 0; transition: opacity .25s ease; z-index:3; }
+.tile:hover .overlay-content{ opacity: 1; }
+
+/* Ensure gradient overlay is above media but below badges & play indicator */
+.tile .overlay{ z-index:2; }
+.play-indicator, .index-badge{ z-index:4; }
+
+/* Keep buttons clickable while overlay is pointer-safe */
+.tile .overlay, .index-badge, .play-indicator{ pointer-events: none; }
+.tile .overlay-content{ pointer-events: none; }
+.tile .overlay-content a{ pointer-events: auto; }
+
+/* Badge contrast tweaks */
+.index-badge{
+  background: rgba(6,10,8,.65);
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.18), 0 2px 8px rgba(0,0,0,.4);
+}

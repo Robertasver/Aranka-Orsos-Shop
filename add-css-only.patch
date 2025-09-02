@@ -1,0 +1,25 @@
+diff --git a/public/hide-breadcrumbs.css b/public/hide-breadcrumbs.css
+new file mode 100644
+index 0000000..1111111
+--- /dev/null
++++ b/public/hide-breadcrumbs.css
+@@ -0,0 +1,24 @@
++/* Hide the breadcrumb line like: "Aranka Orsos • Gallery" */
++.gallery-crumbs,
++.breadcrumbs,
++.header-breadcrumbs,
++.category-crumbs,
++[aria-label="breadcrumbs"],
++[data-breadcrumbs],
++[data-role="breadcrumbs"],
++.crumbs,
++.crumb-trail {
++  display: none !important;
++}
++
++/* If the breadcrumb is inside a small heading container, hide that too */
++.page-subtitle:has(.breadcrumbs),
++.subheader:has(.breadcrumbs) {
++  display: none !important;
++}
++

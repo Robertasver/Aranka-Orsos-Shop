@@ -1,0 +1,35 @@
+diff --git a/src/styles/hide-breadcrumbs.css b/src/styles/hide-breadcrumbs.css
+new file mode 100644
+index 0000000..c0ffee1
+--- /dev/null
++++ b/src/styles/hide-breadcrumbs.css
+@@ -0,0 +1,26 @@
++/* Hide the small breadcrumb line like: "Aranka Orsos • Gallery" */
++.gallery-crumbs,
++.breadcrumbs,
++.header-breadcrumbs,
++.category-crumbs,
++[aria-label="breadcrumbs"],
++[data-breadcrumbs],
++[data-role="breadcrumbs"],
++.crumbs,
++.crumb-trail {
++  display: none !important;
++}
++
++/* If the breadcrumb is inside a small heading container, hide that too */
++.page-subtitle:has(.breadcrumbs),
++.subheader:has(.breadcrumbs) {
++  display: none !important;
++}
+diff --git a/src/App.jsx b/src/App.jsx
+index 1111111..2222222 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -1,5 +1,6 @@
+ import React from 'react'
+ import './App.css'
++import './styles/hide-breadcrumbs.css'
+ 
+ function App() {
+   return (
