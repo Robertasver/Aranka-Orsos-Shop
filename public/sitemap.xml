@@ -1,36 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+# Write the correct sitemap (copy–paste whole block)
+        @"
+        <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.aranka-orsos-butikk.com/</loc>
-    <priority>1.0</priority>
-    <lastmod>2025-09-02</lastmod>
-  </url>
-  <url>
-    <loc>https://www.aranka-orsos-butikk.com/bestselger</loc>
-    <lastmod>2025-09-02</lastmod>
-  </url>
-  <url>
-    <loc>https://www.aranka-orsos-butikk.com/bryllupsbuketter</loc>
-    <lastmod>2025-09-02</lastmod>
-  </url>
-  <url>
-    <loc>https://www.aranka-orsos-butikk.com/bursdagsbuketter</loc>
-    <lastmod>2025-09-02</lastmod>
-  </url>
-  <url>
-    <loc>https://www.aranka-orsos-butikk.com/dekorasjoner</loc>
-    <lastmod>2025-09-02</lastmod>
-  </url>
-  <url>
-    <loc>https://www.aranka-orsos-butikk.com/rosebuketter</loc>
-    <lastmod>2025-09-02</lastmod>
-  </url>
-  <url>
-    <loc>https://www.aranka-orsos-butikk.com/begravelse</loc>
-    <lastmod>2025-09-02</lastmod>
-  </url>
-  <url>
-    <loc>https://www.aranka-orsos-butikk.com/kontakt</loc>
-    <lastmod>2025-09-02</lastmod>
-  </url>
+    <url>
+        <loc>https://www.aranka-orsos-butikk.com/</loc>
+        <priority>1.0</priority>
+        <lastmod>2025-09-03</lastmod>
+    </url>
+    <url><loc>https://www.aranka-orsos-butikk.com/bestselger</loc><lastmod>2025-09-03</lastmod></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/bryllupsbuketter</loc><lastmod>2025-09-03</lastmod></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/bursdagsbuketter</loc><lastmod>2025-09-03</lastmod></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/dekorasjoner</loc><lastmod>2025-09-03</lastmod></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/rosebuketter</loc><lastmod>2025-09-03</lastmod></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/begravelse</loc><lastmod>2025-09-03</lastmod></url>
+    <url><loc>https://www.aranka-orsos-butikk.com/kontakt</loc><lastmod>2025-09-03</lastmod></url>
 </urlset>
+        "@ | Set-Content -Path public\sitemap.xml -Encoding UTF8
