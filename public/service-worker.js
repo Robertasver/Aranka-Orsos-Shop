@@ -1,48 +1,71 @@
-const CACHE = "aranka-cache-v2";
-const ASSETS = [
-  "/",
-  "/leaf-bg.png",
-  "/og-default.jpg",
-  "/manifest.webmanifest"
-];
+// Lightweight service worker for SPA + static assets.
+// IMPORTANT: do NOT try to cache Range (206) responses (video/audio streaming).
+
+const CACHE = "aranka-cache-v3";
+
+// Precache critical shell only (keep tiny).
+const PRECACHE = ["/", "/index.html", "/manifest.webmanifest"];
+
 self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));
+  e.waitUntil(
+    caches.open(CACHE).then((cache) => cache.addAll(PRECACHE)).catch(() => {})
+  );
   self.skipWaiting();
 });
+
 self.addEventListener("activate", (e) => {
   e.waitUntil(
-    caches.keys().then((keys) => Promise.all(keys.map(k => k !== CACHE ? caches.delete(k) : null)))
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
+    )
   );
   self.clients.claim();
 });
+
 self.addEventListener("fetch", (e) => {
+  const req = e.request;
+  const url = new URL(req.url);
+
+  // Only handle GET requests
+  if (req.method !== "GET") return;
+
   // Normalize any accidental '/build/' paths to root
-  /* BUILD PATH REWRITE */
-  const reqUrl = new URL(e.request.url);
-  if (reqUrl.pathname.startsWith('/build/')) {
-    const fixed = new URL(reqUrl.pathname.replace(/^\/build\//, '/'), reqUrl.origin);
-    e.respondWith(fetch(fixed.href, { cache: 'no-store' }));
+  if (url.pathname.startsWith("/build/")) {
+    const fixed = new URL(url.pathname.replace(/^\/build\//, "/"), url.origin);
+    e.respondWith(fetch(fixed.href, { cache: "no-store" }));
     return;
   }
 
-  const url = new URL(e.request.url);
-  if (url.pathname.startsWith("/begravelse") || url.pathname.startsWith("/bestselger") ||
-      url.pathname.startsWith("/bryllups-buketter") || url.pathname.startsWith("/bursdags-buketter") ||
-      url.pathname.startsWith("/dekorasjoner") || url.pathname.startsWith("/rosebuketter")) {
-    // Cache images/videos after first view
-    e.respondWith(
-      caches.open(CACHE).then(async (cache) => {
-        const cached = await cache.match(e.request);
-        if (cached) return cached;
-        const res = await fetch(e.request);
-        if (res.ok) cache.put(e.request, res.clone());
-        return res;
-      })
-    );
+  // Bypass caching for range/media requests (videos/audio use 206 partial content)
+  const isRange = req.headers.has("range");
+  const pathname = url.pathname.toLowerCase();
+  const isMedia =
+    /\.(mp4|webm|mov|m4v|mp3|wav|ogg)$/.test(pathname);
+
+  if (isRange || isMedia) {
+    e.respondWith(fetch(req, { cache: "no-store" }));
     return;
   }
-  // App shell: network-first fallback to cache
+
+  // Network-first with cache fallback for other GETs (HTML/CSS/JS/images)
   e.respondWith(
-    fetch(e.request).catch(() => caches.match(e.request))
+    (async () => {
+      try {
+        const resp = await fetch(req);
+        // Cache only successful full responses (not opaque, not partial)
+        if (resp && resp.status === 200 && !isRange) {
+          try {
+            const cache = await caches.open(CACHE);
+            cache.put(req, resp.clone());
+          } catch {}
+        }
+        return resp;
+      } catch (err) {
+        const cache = await caches.open(CACHE);
+        const cached = await cache.match(req);
+        if (cached) return cached;
+        throw err;
+      }
+    })()
   );
 });
