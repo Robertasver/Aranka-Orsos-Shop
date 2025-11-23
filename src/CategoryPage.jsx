@@ -140,6 +140,7 @@ export default function CategoryPage() {
     bursdagsbuketter: "Gled noen med varige bursdagsbuketter.",
     dekorasjoner: "Varige dekorasjoner for hjem og arrangement.",
     rosebuketter: "Klassiske rosebuketter i evighetsblomster.",
+    julebuketter: "Stemningsfulle julebuketter og dekorasjoner i evighetsblomster.",
     begravelse: "Verdige og varige blomster til begravelser."
   };
   const description = descriptionMap[slug] || `Galleri: ${slug}`;

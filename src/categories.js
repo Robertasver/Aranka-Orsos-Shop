@@ -7,6 +7,7 @@ export const CATEGORIES = [
   { slug: "bursdagsbuketter",  label: "navbar.categories.bursdagsbuketter",  dir: "bursdags-buketter" },
   { slug: "dekorasjoner",      label: "navbar.categories.dekorasjoner",      dir: "dekorasjoner" },
   { slug: "rosebuketter",      label: "navbar.categories.rosebuketter",      dir: "rosebuketter" },
+  { slug: "julebuketter",      label: "navbar.categories.julebuketter",      dir: "julebuketter" },
 ];
 
 // Recognized extensions (case-insensitive)

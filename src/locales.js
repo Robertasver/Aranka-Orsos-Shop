@@ -9,6 +9,7 @@ const resources = {
       "navbar.categories.bursdagsbuketter": "Bursdagsbuketter",
       "navbar.categories.dekorasjoner": "Dekorasjoner",
       "navbar.categories.rosebuketter": "Rosebuketter",
+      "navbar.categories.julebuketter": "Julebuketter",
 
       "homepage.hero.title": "Aranka Orsos",
       "homepage.hero.subtitle": "EVIGHETSBLOMSTER",
@@ -64,6 +65,7 @@ const resources = {
       "navbar.categories.bursdagsbuketter": "Birthday Bouquets",
       "navbar.categories.dekorasjoner": "Decorations",
       "navbar.categories.rosebuketter": "Rose Bouquets",
+      "navbar.categories.julebuketter": "Christmas Bouquets",
 
       "homepage.hero.title": "Aranka Orsos",
       "homepage.hero.subtitle": "EVERLASTING FLOWERS",
@@ -119,6 +121,7 @@ const resources = {
       "navbar.categories.bursdagsbuketter": "Букеты на день рождения",
       "navbar.categories.dekorasjoner": "Декорации",
       "navbar.categories.rosebuketter": "Букеты из роз",
+      "navbar.categories.julebuketter": "Рождественские букеты",
 
       "homepage.hero.title": "Aranka Orsos",
       "homepage.hero.subtitle": "ВЕЧНЫЕ ЦВЕТЫ",
@@ -174,6 +177,7 @@ const resources = {
       "navbar.categories.bursdagsbuketter": "Gimtadienio puokštės",
       "navbar.categories.dekorasjoner": "Dekoracijos",
       "navbar.categories.rosebuketter": "Rožių puokštės",
+      "navbar.categories.julebuketter": "Kalėdinės puokštės",
 
       "homepage.hero.title": "Aranka Orsos",
       "homepage.hero.subtitle": "AMŽINOS GĖLĖS",
@@ -284,6 +288,7 @@ const resources = {
       "navbar.categories.bursdagsbuketter": "Születésnapi csokrok",
       "navbar.categories.dekorasjoner": "Dekorációk",
       "navbar.categories.rosebuketter": "Rózsacsokrok",
+      "navbar.categories.julebuketter": "Karácsonyi csokrok",
 
       "homepage.hero.title": "Aranka Orsos",
       "homepage.hero.subtitle": "ÖRÖK VIRÁGOK",
@@ -339,6 +344,7 @@ const resources = {
       "navbar.categories.bursdagsbuketter": "Букети на день народження",
       "navbar.categories.dekorasjoner": "Декорації",
       "navbar.categories.rosebuketter": "Букети з троянд",
+      "navbar.categories.julebuketter": "Різдвяні букети",
 
       "homepage.hero.title": "Aranka Orsos",
       "homepage.hero.subtitle": "ВІЧНІ КВІТИ",

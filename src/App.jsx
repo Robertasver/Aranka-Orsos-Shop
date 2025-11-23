@@ -47,7 +47,7 @@ export default function App() {
             <button className={i18n.language === "lt" ? "lang-active" : ""} onClick={() => setLang("lt")}>LT</button>
             <button className={i18n.language === "sk" ? "lang-active" : ""} onClick={() => setLang("sk")}>SK</button>
             <button className={i18n.language === "hu" ? "lang-active" : ""} onClick={() => setLang("hu")}>HU</button>
-            <button className={i18n.language === "uk" ? "lang-active" : ""} onClick={() => setLang("uk")}>UK</button>
+            <button className={i18n.language === "uk" ? "lang-active" : ""} onClick={() => setLang("uk")}>UA</button>
           </div>
         </header>
 
