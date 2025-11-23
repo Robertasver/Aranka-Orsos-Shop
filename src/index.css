@@ -79,3 +79,55 @@
 html, body, #root { margin: 0 !important; padding: 0 !important; }
 .navbar { margin-top: 0 !important; }
 .app-bg, .app-overlay { top: 0 !important; }
+
+
+/* --- Mobile navbar: hide categories and show Categories button --- */
+.nav-categories-toggle {
+  display: none;
+}
+
+/* Phones / small tablets */
+@media (max-width: 768px) {
+  .navbar {
+    grid-template-columns: auto auto;
+    align-items: center;
+    row-gap: 8px;
+  }
+
+  .nav-center {
+    display: none;
+    grid-column: 1 / -1;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .nav-center.nav-center--open {
+    display: flex;
+  }
+
+  .nav-categories-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    margin-left: 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+/* Desktop and up: always show nav-center, hide toggle */
+@media (min-width: 769px) {
+  .nav-categories-toggle {
+    display: none;
+  }
+
+  .nav-center {
+    display: flex;
+  }
+}

@@ -3,6 +3,7 @@ const resources = {
     translation: {
       "navbar.home": "Hjem",
       "navbar.contact": "Kontakt",
+      "navbar.categories_button": "Kategorier",
       "navbar.categories.begravelse": "Begravelse",
       "navbar.categories.bestselger": "Bestselgere",
       "navbar.categories.bryllupsbuketter": "Bryllupsbuketter",
@@ -59,6 +60,7 @@ const resources = {
     translation: {
       "navbar.home": "Home",
       "navbar.contact": "Contact",
+      "navbar.categories_button": "Categories",
       "navbar.categories.begravelse": "Funeral",
       "navbar.categories.bestselger": "Bestsellers",
       "navbar.categories.bryllupsbuketter": "Wedding Bouquets",
@@ -171,6 +173,7 @@ const resources = {
     translation: {
       "navbar.home": "Pagrindinis",
       "navbar.contact": "Kontaktai",
+      "navbar.categories_button": "Kategorijos",
       "navbar.categories.begravelse": "Laidojimo kompozicijos",
       "navbar.categories.bestselger": "Perkamiausi",
       "navbar.categories.bryllupsbuketter": "Vestuvinės puokštės",
@@ -227,6 +230,7 @@ const resources = {
     translation: {
       "navbar.home": "Domov",
       "navbar.contact": "Kontakt",
+      "navbar.categories_button": "Kategórie",
       "navbar.categories.begravelse": "Smútočné aranžmány",
       "navbar.categories.bestselger": "Najpredávanejšie",
       "navbar.categories.bryllupsbuketter": "Svadobné kytice",
@@ -282,6 +286,7 @@ const resources = {
     translation: {
       "navbar.home": "Főoldal",
       "navbar.contact": "Kapcsolat",
+      "navbar.categories_button": "Kategóriák",
       "navbar.categories.begravelse": "Gyászkompozíciók",
       "navbar.categories.bestselger": "Legnépszerűbbek",
       "navbar.categories.bryllupsbuketter": "Menyasszonyi csokrok",
@@ -338,6 +343,7 @@ const resources = {
     translation: {
       "navbar.home": "Головна",
       "navbar.contact": "Контакти",
+      "navbar.categories_button": "Категорії",
       "navbar.categories.begravelse": "Траурні композиції",
       "navbar.categories.bestselger": "Хіти продажу",
       "navbar.categories.bryllupsbuketter": "Весільні букети",

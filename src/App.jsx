@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { CATEGORIES } from "./categories";
 import i18n from "./i18n";
@@ -16,6 +16,7 @@ const Kontakt = lazy(() => import("./Kontakt"));
 export default function App() {
   function setLang(lng){ try { localStorage.setItem('lang', lng); } catch(e){}; i18n.changeLanguage(lng); }
   const { t } = useTranslation();
+  const [showMobileCategories, setShowMobileCategories] = useState(false);
 
   return (
     <HelmetProvider>
@@ -26,18 +27,34 @@ export default function App() {
         <header className="navbar">
           <NavLink to="/" className="brand">Aranka Orsos</NavLink>
 
-          <nav className="nav-center">
+          {/* Mobile: Categories toggle button */}
+          <button
+            type="button"
+            className="nav-categories-toggle"
+            onClick={() => setShowMobileCategories(!showMobileCategories)}
+          >
+            {t("navbar.categories_button")}
+          </button>
+
+          <nav className={`nav-center ${showMobileCategories ? "nav-center--open" : ""}`}>
             {CATEGORIES.map((c) => (
               <NavLink
                 key={c.slug}
                 to={`/${c.slug}`}
                 className="nav-link"
                 onMouseEnter={() => prefetchCategory(c.dir)}
+                onClick={() => setShowMobileCategories(false)}
               >
                 {t(c.label)}
               </NavLink>
             ))}
-            <NavLink to="/kontakt" className="nav-link">{t("navbar.contact")}</NavLink>
+            <NavLink
+              to="/kontakt"
+              className="nav-link"
+              onClick={() => setShowMobileCategories(false)}
+            >
+              {t("navbar.contact")}
+            </NavLink>
           </nav>
 
           <div className="nav-right">
