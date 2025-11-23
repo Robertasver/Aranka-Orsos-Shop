@@ -128,7 +128,35 @@
     "type": "image"
   },
   {
-    "file": "33.mp4",
+    "file": "33.jpg",
+    "type": "image"
+  },
+  {
+    "file": "34.jpg",
+    "type": "image"
+  },
+  {
+    "file": "35.jpg",
+    "type": "image"
+  },
+  {
+    "file": "36.jpg",
+    "type": "image"
+  },
+  {
+    "file": "37.jpg",
+    "type": "image"
+  },
+  {
+    "file": "38.jpg",
+    "type": "image"
+  },
+  {
+    "file": "39.jpg",
+    "type": "image"
+  },
+  {
+    "file": "40.mp4",
     "type": "video"
   }
 ]
